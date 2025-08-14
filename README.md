@@ -139,6 +139,30 @@ This project showcases a full-featured text analysis platform built with Django,
 | `/api/v1/search/` | GET | Search for words | `?word=example&limit=10&offset=0` |
 | `/api/v1/analytics/` | GET | Get user's word frequency stats | `?top=20` |
 
+### Error Responses
+
+All API errors follow a consistent format:
+
+```json
+// 400 Bad Request
+{
+    "error": "Bad Request",
+    "details": {"content": ["This field is required."]}
+}
+
+// 401 Unauthorized  
+{
+    "error": "Unauthorized",
+    "message": "Authentication credentials were not provided."
+}
+
+// 404 Not Found
+{
+    "error": "Not Found", 
+    "message": "The requested resource was not found."
+}
+```
+
 ### Example Usage
 
 ```bash
@@ -146,21 +170,70 @@ This project showcases a full-featured text analysis platform built with Django,
 curl -X POST http://localhost:8000/api/v1/auth/register/ \
   -H "Content-Type: application/json" \
   -d '{"username": "testuser", "email": "test@example.com", "password": "securepass123"}'
+```
 
+**Response (201 Created):**
+```json
+{
+    "user": {"id": 1, "username": "testuser", "email": "test@example.com"},
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+}
+```
+
+```bash
 # Login and get tokens
 curl -X POST http://localhost:8000/api/v1/auth/login/ \
   -H "Content-Type: application/json" \
   -d '{"username": "testuser", "password": "securepass123"}'
+```
 
+**Response (200 OK):**
+```json
+{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+}
+```
+
+```bash
 # Upload text content
 curl -X POST http://localhost:8000/api/v1/paragraphs/ \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -d '{"content": "This is a sample paragraph for text analysis."}'
+```
 
+**Response (201 Created):**
+```json
+{
+    "id": 1,
+    "content": "This is a sample paragraph for text analysis.",
+    "word_count": 8,
+    "processing_status": "completed",
+    "created_at": "2025-08-14T10:30:00Z"
+}
+```
+
+```bash
 # Search for words
 curl "http://localhost:8000/api/v1/search/?word=sample&limit=5" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+**Response (200 OK):**
+```json
+{
+    "count": 1,
+    "results": [
+        {
+            "paragraph_id": 1,
+            "content": "This is a **sample** paragraph for text analysis.",
+            "word_frequency": 1,
+            "created_at": "2025-08-14T10:30:00Z"
+        }
+    ]
+}
 ```
 
 ## 🐳 Docker Deployment
@@ -218,7 +291,7 @@ docker-compose down -v && docker-compose up --build
 ## 📞 Contact
 
 **Sreejith TK**  
-*Aspiring full stack Developer | Django Enthusiast*
+*Aspiring Backend Developer | Django Enthusiast*
 
 - **Email**: sree7ith@gmail.com
 - **GitHub**: [@SREEJITH7](https://github.com/SREEJITH7)
@@ -227,4 +300,3 @@ docker-compose down -v && docker-compose up --build
 ---
 
 *This project demonstrates advanced Django development skills and backend engineering capabilities for the **Codemonk** internship opportunity. Built with passion for clean code, scalable architecture, and modern development practices.*
-
