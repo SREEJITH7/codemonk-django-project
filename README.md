@@ -4,7 +4,7 @@
 
 This project showcases a full-featured text analysis platform built with Django, PostgreSQL, Celery, and Docker. It demonstrates proficiency in REST API development, asynchronous processing, database optimization, and containerized deployment - key skills valuable for backend development at Codemonk.
 
-## 🚀 Project Overview
+##  Project Overview
 
 **Text Analytics API** is a robust backend system that ingests textual content, intelligently processes paragraphs, computes word frequencies, and provides powerful search capabilities. This project highlights my expertise in:
 
@@ -14,7 +14,7 @@ This project showcases a full-featured text analysis platform built with Django,
 - **Containerization** - Docker-first deployment strategy
 - **Performance Optimization** - Efficient search algorithms and caching
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
@@ -25,7 +25,7 @@ This project showcases a full-featured text analysis platform built with Django,
 - [Future Enhancements](#-future-enhancements)
 - [Contact](#-contact)
 
-## ✨ Features
+##  Features
 
 ### Core Functionality
 - **JWT Authentication System** - Secure user registration and token-based authentication
@@ -40,7 +40,7 @@ This project showcases a full-featured text analysis platform built with Django,
 - **Scalable Design** - Microservices-ready architecture with separated concerns
 - **Production-Ready** - Environment configuration and deployment best practices
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Category | Technologies |
 |----------|-------------|
@@ -74,7 +74,7 @@ This project showcases a full-featured text analysis platform built with Django,
 - **Redis** - Message broker and caching layer
 - **Docker Compose** - Orchestrates all services for seamless deployment
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Docker & Docker Compose
@@ -121,7 +121,7 @@ This project showcases a full-featured text analysis platform built with Django,
    - **PGAdmin**: http://localhost:5050 (admin@admin.com / admin)
    - **API Documentation**: http://localhost:8000/api/docs/
 
-## 📚 API Documentation
+##  API Documentation
 
 ### Authentication Endpoints
 
@@ -300,3 +300,4 @@ docker-compose down -v && docker-compose up --build
 ---
 
 *This project demonstrates advanced Django development skills and backend engineering capabilities for the **Codemonk** internship opportunity. Built with passion for clean code, scalable architecture, and modern development practices.*
+
